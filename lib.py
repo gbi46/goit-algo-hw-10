@@ -1,3 +1,5 @@
+from colorama import init, Fore
+
 def find_coins_greedy(amount, coins=[]):
     """Greedy change-making algorithm. Returns a dict {denomination: count}."""
     if amount < 0:
@@ -48,3 +50,15 @@ def find_min_coins(amount, coins=[]):
         res[c] = res.get(c, 0) + 1
         x -= c
     return dict(sorted(res.items(), key=lambda kv: kv[0]))
+
+init(autoreset=True)
+
+def print_task_header(task_number: int):
+    print(Fore.GREEN + "=========================")
+
+    for i in range(6):
+        if i == 3:
+            print(Fore.GREEN + "=" + Fore.YELLOW + " " * 8 + f"Task {task_number}" + Fore.GREEN + " " * 9 + "=")
+        else:
+            print(Fore.GREEN + "=                       =")
+    print(Fore.GREEN + "=========================")
