@@ -1,25 +1,26 @@
 from colorama import init, Fore
 
-def find_coins_greedy(amount, coins=[]):
+def find_coins_greedy(amount, coins=None):
     """Greedy change-making algorithm. Returns a dict {denomination: count}."""
     if amount < 0:
         raise ValueError("Amount must be non-negative")
     
     if not coins:
         raise ValueError("Coin denominations list cannot be empty")
+
+    coins = tuple(sorted(coins, reverse=True))
     
     result = {}
     remaining = amount
-    for c in sorted(coins, reverse=True):
+    for c in coins:
+        k, remaining = divmod(remaining, c)
+        if k:
+            result[c] = k
         if remaining == 0:
             break
-        k = remaining // c
-        if k > 0:
-            result[c] = k
-            remaining -= k * c
-    return dict(sorted(result.items(), key=lambda kv: kv[0]))
+    return dict(sorted(result.items()))
 
-def find_min_coins(amount, coins=[]):
+def find_min_coins(amount, coins=None):
     """Dynamic programming (minimum number of coins). Returns a dict {denomination: count}."""
     if amount < 0:
         raise ValueError("Amount must be non-negative")
