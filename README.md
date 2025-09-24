@@ -74,23 +74,19 @@ The goal is to estimate the integral
 using random sampling.
 
 1. **Generate random samples**  
-   Draw `N` random points uniformly in the interval \([a, b]\).
+   Draw `N` random points uniformly in the interval `[a, b]`.
 
 2. **Evaluate the function**  
-   Compute \( f(x) \) for each random point.
+   Compute `f(x)` for each random point.
 
 3. **Compute the mean**  
-   Approximate the expected value of the function:
-   \[
-   \text{mean} \approx \frac{1}{N} \sum_{i=1}^N f(x_i)
-   \]
+   Approximate the expected value of the function:  
+   mean ≈ (1 / N) · Σ f(xᵢ),  i = 1..N
 
 4. **Scale by interval length**  
-   Multiply the average by the interval width:
-   \[
-   I \approx (b-a) \cdot \text{mean}
-   \]
+   Multiply the average by the interval width:  
+   I ≈ (b − a) · mean
 
 5. **Accuracy**  
    - Improves as the number of samples increases (`N → ∞`).  
-   - Error decreases roughly as \( 1/\sqrt{N} \).  
+   - Error decreases roughly as `1 / √N`.
