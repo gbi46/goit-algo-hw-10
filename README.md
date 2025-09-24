@@ -69,7 +69,7 @@ This project demonstrates how to approximate definite integrals using the **Mont
 
 The goal is to estimate the integral
 
-$ I = \int_a^b f(x)\,dx $
+`I = ∫[a,b] f(x) dx`
 
 using random sampling.
 
