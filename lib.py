@@ -1,5 +1,7 @@
 from colorama import init, Fore
 
+import numpy as np
+
 def find_coins_greedy(amount, coins=None):
     """Greedy change-making algorithm. Returns a dict {denomination: count}."""
     if amount < 0:
@@ -51,6 +53,35 @@ def find_min_coins(amount, coins=None):
         res[c] = res.get(c, 0) + 1
         x -= c
     return dict(sorted(res.items(), key=lambda kv: kv[0]))
+
+def monte_carlo_integration(func, a, b, num_samples=100000):
+    """
+    Monte Carlo integration method
+
+    Parameters:
+    func : callable
+        The function to integrate. It should take a single argument.
+    a : float
+        The start of the integration interval.
+    b : float
+        The end of the integration interval.
+    num_samples : int
+        The number of random samples to use for the estimation.
+
+    Returns:
+    float
+        Approximate value of the integral.
+    """
+
+    # Generate x random points in the interval [a, b]
+    x_random = np.random.uniform(a, b, num_samples)
+
+    # Evaluate the function at x_random points
+    y_random = func(x_random)
+
+    # Compute the approximate integral using the average value
+    integral_estimate = (b - a) * np.mean(y_random)
+    return integral_estimate
 
 init(autoreset=True)
 
