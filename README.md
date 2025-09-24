@@ -1,3 +1,11 @@
+# Run the project
+
+```bash
+pythom -m venv .venv
+pip install -r requirements.txt
+python main.py
+```
+
 # Coin Change Problem: Greedy vs Dynamic Programming
 
 ## Algorithms
