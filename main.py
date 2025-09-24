@@ -8,7 +8,7 @@ print(Fore.CYAN + "=== Greedy and dynamic programming algorithms comparison ==="
 
 COINS = [50, 25, 10, 5, 2, 1]
 
-test_amounts = [1, 3, 7, 14, 23, 30, 99, 100, 123, 256, 512]
+test_amounts = [1, 1_000, 7, 5_000, 23, 10_000, 99, 50_000, 123, 100_000, 512, 200_000]
 for amount in test_amounts:
     greedy_result = find_coins_greedy(amount, COINS)
     min_coins_result = find_min_coins(amount, COINS)
